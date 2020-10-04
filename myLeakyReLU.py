@@ -1,7 +1,7 @@
-'''
+"""
 Online lecture: Basics of PyTorch autograd
 Demonstrate custom implementation #1 of forward and backward propagation of LeakyReLU
-'''
+"""
 import torch
 from torch.autograd import Function
 

@@ -1,7 +1,7 @@
-'''
+"""
 Online lecture: Basics of PyTorch autograd
 Demonstrate custom implementation #2 of forward and backward propagation of Conv2d
-'''
+"""
 import torch
 from torch.autograd import Function
 

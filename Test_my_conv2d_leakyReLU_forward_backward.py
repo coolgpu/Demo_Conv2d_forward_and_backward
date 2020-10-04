@@ -1,7 +1,7 @@
-'''
+"""
 Online lecture: Basics of PyTorch autograd
 Demonstrate custom implementation of forward and backward propagation of a Conv2d-LeakyReLU neural network
-'''
+"""
 import torch
 from torch import nn
 from torch.nn.parameter import Parameter
