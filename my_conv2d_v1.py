@@ -37,7 +37,11 @@ class MyConv2d_v1(Function):
         '''
         inX_nSamp_nB_nL = torch.nn.functional.unfold(inX, (nKnRows, nKnCols), padding=padding, stride=stride)
         inX_nSamp_nL_nB = inX_nSamp_nB_nL.transpose(1, 2)
-        kn_nOutCh_nB = in_weight.view(nOutCh, -1)
+         # "view" won't work if some part of the tensor is not contiguous, for example, 
+         # when coming from torch.flip() of the original one. 
+         # Therefore, "view" is changed to "reshape"
+        # kn_nOutCh_nB = in_weight.view(nOutCh, -1) 
+        kn_nOutCh_nB = in_weight.reshape(nOutCh, -1)
         kn_nB_nOutCh = kn_nOutCh_nB.t()
         out_nSamp_nL_nOutCh = inX_nSamp_nL_nB.matmul(kn_nB_nOutCh)
         out_nSamp_nOutCh_nL = out_nSamp_nL_nOutCh.transpose(1, 2)
